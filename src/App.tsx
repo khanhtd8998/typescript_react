@@ -7,6 +7,7 @@ import Shop from "./pages/Shop";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProductDetail from "./pages/ProductDetail";
+// import UserLayout from "./components/layout/LayoutUser";
 
 
 
