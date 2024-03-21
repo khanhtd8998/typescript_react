@@ -14,7 +14,7 @@ const Home = () => {
       <div className='banner'>
         <img className='tw-w-full tw-h-[20rem]' src='https://www.paragyte.com/img/React_Banner.png' alt='' />
       </div>
-      <h1 className='text-center my-3'>HOME</h1>
+      {/* <h1 className='text-center my-3'>HOME</h1> */}
       <ProductList products={products} />
       <div className="mb-3"></div>
     </div>

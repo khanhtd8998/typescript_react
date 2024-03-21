@@ -5,7 +5,7 @@ type TProps = {
 }
 const ProductList = (props: TProps) => {
   return (
-    <div className='container'>
+    <div className='container my-3'>
       <div className='row mx-auto'>
         {props.products.map((product: TProduct) => (
           <Product product={product} />
