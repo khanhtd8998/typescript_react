@@ -14,7 +14,7 @@ const Product = (props: Props) => {
     return (
         <div className='col-3 mb-5'>
             <div className='card tw-w-[18rem]'>
-                <Link to={`detail/${props.product.id}`}><img src={props.product.thumbnail} className='card-img-top tw-h-[10rem]' alt='...' /></Link>
+                <Link to={`/detail/${props.product.id}`}><img src={props.product.thumbnail} className='card-img-top tw-h-[10rem]' alt='...' /></Link>
                 <div className='card-body tw-h-[14rem]'>
                     <div className=' tw-h-[3rem]'>
                         <p className='card-title mb-3 fs-5 '>{props.product.title}</p>
