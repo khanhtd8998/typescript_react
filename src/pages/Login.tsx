@@ -20,7 +20,7 @@ const Login = (props: Props) => {
           <div className="row my-3">
             <div className="col d-flex justify-content-center">
               <div className="form-check">
-                <input className="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                <input className="form-check-input" type="checkbox" value="" id="form2Example31" />
                 <label className="form-check-label" htmlFor="form2Example31"> Remember me </label>
               </div>
               <div className="col mx-3">
@@ -33,8 +33,8 @@ const Login = (props: Props) => {
 
           <button type="button" className="btn btn-primary btn-block mb-4">Sign in</button>
 
-          <div className="text-center">
-            <p>Not a member? <a href="#!">Register</a></p>
+          <div className="text-center mb-1">
+            <p>Not a member? <a href="/register">Register</a></p>
             <p>or sign up with:</p>
             <button type="button" className="btn btn-link btn-floating mx-1">
               <i className="fab fa-facebook-f"></i>

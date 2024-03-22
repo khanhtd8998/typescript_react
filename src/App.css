@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 } */
+@media (max-width: 768px) {
+    .product-info {
+        flex-direction: column;
+    }
+
+    .product-img-container {
+        border: none;
+    }
+
+    .product-details {
+        border-left: none;
+    }
+}

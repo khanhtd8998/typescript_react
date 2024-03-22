@@ -71,7 +71,7 @@ const ProductDetail = () => {
                             <span className='me-2'>{calculateRatingStars(product?.rating)}</span>
                             <span className="tw-text-gray-500">{product.brand}</span>
                             <span className="tw-text-gray-500 mx-2">|</span>
-                            <span className="tw-text-gray-500">Đã bán 1000+</span>
+                            <span className="tw-text-gray-500">Sales 1000+</span>
                         </div>
                         <div className="pb-2 border-bottom">
                             <div
@@ -92,7 +92,7 @@ const ProductDetail = () => {
                         </div>
                         <div className="py-2 border-bottom">
                             <div className="quantity">
-                                <p className="tw-text-xl tw-font-medium">Số Lượng</p>
+                                <p className="tw-text-xl tw-font-medium">Quantity</p>
                                 <button type="button" className="decrease py-2 px-3 border rounded-2">
                                     <i className="fa-solid fa-minus"></i>
                                 </button>
@@ -101,12 +101,12 @@ const ProductDetail = () => {
                                     <i className="fa-solid fa-plus"></i>
                                 </button>
                             </div>
-                            <button className="my-3 tw-min-h-[50px] tw-min-w-[300px] tw-text-white tw-bg-[#FF3945] rounded-2">Chọn mua</button>
+                            <button className="my-3 tw-min-h-[50px] tw-min-w-[300px] tw-text-white tw-bg-[#FF3945] rounded-2">Buy now</button>
                         </div>
                     </div>
                 </div>
                 <div className="tw-px-[100px] tw-py-[2rem]">
-                    <h4 className="mb-3">Mô Tả Sản Phẩm</h4>
+                    <h4 className="mb-3">Description</h4>
                     <p>
                         {product?.description}
                     </p>
@@ -116,15 +116,6 @@ const ProductDetail = () => {
                 </div>
             </div>
         </>
-        // <div className='container'>
-        //     <h1>Chi tiet san pham</h1>
-        //     <div>
-        //         <h2>{product?.title}</h2>
-        //         <p>Gia: {product?.price}</p>
-        //         <p>{product?.description}</p>
-        //         <img src={product?.thumbnail} alt={product?.title} />
-        //     </div>
-        // </div>
     )
 
 }
