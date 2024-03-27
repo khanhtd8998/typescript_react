@@ -1,8 +1,7 @@
 import { useState } from 'react'
 
-type Props = {}
 
-const Shop = (props: Props) => {
+const Shop = () => {
   const [cardholderName, setCardholderName] = useState('');
   const [cardNumber, setCardNumber] = useState('');
   const [expiration, setExpiration] = useState('');

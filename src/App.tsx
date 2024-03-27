@@ -12,6 +12,7 @@ import UserLayout from "./components/layout/LayoutUser";
 import AdminLayout from "./components/layout/LayoutAdmin";
 import AddProduct from "./components/admin/AddProduct";
 import UpdateProduct from "./components/admin/UpdateProduct";
+import Notfound from "./pages/Notfound";
 
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/shop" element={<UserLayout Components={Shop} />} />
           <Route path="/login" element={<UserLayout Components={Login} />} />
           <Route path="/detail/:id" element={<UserLayout Components={ProductDetail} />} />
+          <Route path="*" element={<UserLayout Components={Notfound} />} />
           <Route path="/register" element={<UserLayout Components={Register} />} />
           <Route path="/admin" element={<AdminLayout Components={Dashboard} />} />
           <Route path="/admin/add" element={<AdminLayout Components={AddProduct} />} />

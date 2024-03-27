@@ -9,14 +9,15 @@ const Product = (props: Props) => {
         return stars.map(() => <i className="fa-solid fa-star fa-xs" ></i>);
     };
     return (
-        <div className='col-3 mb-5'>
+        <div className='col col-sm-6 col-md-4 col-lg-3 mb-5
+        '>
             <div className='card tw-w-[18rem] pb-2'>
                 <Link to={`/detail/${props.product.id}`}><img src={props.product.thumbnail} className='card-img-top tw-h-[10rem]' alt='...' /></Link>
-                <div className='card-body tw-h-[14rem]'>
+                <div className='card-body tw-h-[15rem] d-flex flex-column tw-justify-between'>
                     <div className=' tw-h-[3rem]'>
                         <p className='card-title mb-3 fs-5 '>{props.product.title}</p>
                     </div>
-                    <div className="">
+                    <div className="mt-3">
                         <div className='d-flex align-items-center'>
                             <span className="tw-text-2xl tw-text-[#FF424E] tw-font-medium tw-p-0">
                                 $ {props.product.price}
@@ -33,7 +34,7 @@ const Product = (props: Props) => {
                         <span className="tw-text-gray-500">Brand: {props.product.brand}</span>
 
                     </div>
-                    <div className='mb-3'>
+                    <div className='mt-3'>
                         <span className='card-text mt-3'>{props.product.description.substring(0, 100)}</span>
                     </div>
                 </div>
