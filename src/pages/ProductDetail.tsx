@@ -13,15 +13,10 @@ const ProductDetail = () => {
     const { id } = useParams();
     const [product, setProduct] = useState<TProduct>();
     useEffect(() => {
-        const getProduct = async () => {
-            try {
-                const { data } = await instance.get(`/products/${id}`);
-                setProduct(data);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        getProduct()
+        (async () => {
+            const { data } = await instance.get(`/products/${id}`);
+            setProduct(data);
+        })()
     }, [])
     if (isEmpty(product)) {
         return (
@@ -59,8 +54,8 @@ const ProductDetail = () => {
                     <div className="tw-w-[500px] p-3 border-start">
                         <div className="div">
                             <h3>{product?.title}</h3>
-                            <span className='me-2'>{calculateRatingStars(product?.rating)}</span>
-                            <span className="tw-text-gray-500">{product.brand}</span>
+                            <span className='me-2'>{calculateRatingStars(+product?.rating!)}</span>
+                            <span className="tw-text-gray-500">{product.brand || "Đang cập nhật"}</span>
                             <span className="tw-text-gray-500 mx-2">|</span>
                             <span className="tw-text-gray-500">Sales 1000+</span>
                         </div>
@@ -72,12 +67,12 @@ const ProductDetail = () => {
                                     {product?.price} $
                                 </p>
                                 <p className="tw-text-xl tw-text-[#ccc] tw-font-medium tw-pb-1">
-                                    <del>{Math.ceil((product?.price / (100 - product.discountPercentage)) * 100)} $</del>
+                                    <del>{Math.ceil((product?.price / (100 - +product?.discountPercentage!)) * 100) || ""}</del>
                                 </p>
                                 <p
                                     className="discount tw-text-xl tw-text-[#FF424E] tw-font-medium tw-pb-2"
                                 >
-                                    -{Math.ceil(product.discountPercentage)}%
+                                    -{Math.ceil(+product?.discountPercentage!) || "0"}%
                                 </p>
                             </div>
                         </div>

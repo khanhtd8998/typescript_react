@@ -23,7 +23,7 @@ const Product = (props: Props) => {
                                 $ {props.product.price}
                             </span>
                             <span className='mx-2 tw-text-xl tw-text-[#ccc] tw-font-medium'>
-                                <del>{Math.ceil((props.product?.price / (100 - props.product.discountPercentage)) * 100)} $</del>
+                                <del>{Math.ceil((props.product?.price / (100 - props.product?.discountPercentage)) * 100) || " "}</del>
                             </span>
                             <span className=''></span>
                             <span>
@@ -31,7 +31,7 @@ const Product = (props: Props) => {
                             </span>
 
                         </div>
-                        <span className="tw-text-gray-500">Brand: {props.product.brand}</span>
+                        <span className="tw-text-gray-500">Brand: {props.product.brand || 'Đang cập nhật'}</span>
 
                     </div>
                     <div className='mt-3'>

@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -13,23 +13,56 @@ import AdminLayout from "./components/layout/LayoutAdmin";
 import AddProduct from "./components/admin/AddProduct";
 import UpdateProduct from "./components/admin/UpdateProduct";
 import Notfound from "./pages/Notfound";
+import { useEffect, useState } from "react";
+import { TProduct } from "./types/Product";
+import { createProduct, getProducts, removeProduct } from "./apis/products";
 
 
 
 function App() {
+  const [products, setProducts] = useState<TProduct[]>([])
+  const navigate = useNavigate()
+  useEffect(() => {
+    (async () => {
+      const data = await getProducts();
+      setProducts(data);
+    })()
+  }, [])
+  const handleAddProduct = (data: TProduct) => {
+    (async () => {
+      const newProduct = await createProduct(data);
+      setProducts([newProduct, ...products]);
+      navigate('/admin')
+      alert("Thêm sản phẩm thành công")
+    })()
+  }
+
+  const handleDeleteProduct = (id: number | string) => {
+    (async () => {
+      if(confirm('Are you sure you want to delete this product?')){
+        await removeProduct(id);
+        setProducts(products.filter(p => p.id != id  ));
+      }
+    })();
+  }
   return (
     <>
       <div className="app">
+        <Header />
         <Routes>
-          <Route path="/" element={<UserLayout Components={Home} />} />
-          <Route path="/shop" element={<UserLayout Components={Shop} />} />
-          <Route path="/login" element={<UserLayout Components={Login} />} />
-          <Route path="/detail/:id" element={<UserLayout Components={ProductDetail} />} />
-          <Route path="*" element={<UserLayout Components={Notfound} />} />
-          <Route path="/register" element={<UserLayout Components={Register} />} />
-          <Route path="/admin" element={<AdminLayout Components={Dashboard} />} />
-          <Route path="/admin/add" element={<AdminLayout Components={AddProduct} />} />
-          <Route path="/admin/update/:id" element={<AdminLayout Components={UpdateProduct} />} />
+          <Route path="/">
+            <Route index element={<Home products={products} />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/detail/:id" element={<ProductDetail />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
+          <Route path="/admin">
+            <Route index element={<Dashboard products={products} onDelete={handleDeleteProduct} />} />
+            <Route path="/admin/add" element={<AddProduct onAdd={handleAddProduct} />} />
+            <Route path="/admin/update/:id" element={<UpdateProduct />} />
+          </Route>
+          <Route path="*" element={<Notfound />} />
         </Routes>
       </div>
     </>

@@ -1,27 +1,22 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import instance from "~/apis";
 import { TProduct } from "~/types/Product";
 
-const Dashboard = () => {
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-        const getAllProducts = async () => {
-            try {
-                const { data } = await instance.get("/products");
-                setProducts(data);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        getAllProducts()
-    }, [])
-    console.log(products);
+type Props ={
+    products: TProduct[],
+    onDelete: (id: string | number) => void,
+}
+const Dashboard = ({products, onDelete}: Props) => {
+    const handleDelete = (id: string | number) => {
+        onDelete(id)
+    }
     return (
         <>
             <h1 className="tw-text-2xl fs-3 text-center my-4">Danh sách sản phẩm</h1>
             {/* <div className="container"></div> */}
-            <table className="table text-center border-1">
+            <Link className="btn btn-success m-3" to='/admin/add'>Thêm sản phẩm</Link>
+            <table className="table text-center border-1 table-striped">
                 <thead className="table-light border-2 fs-5">
                     <th className="tw-w-[5%]">STT</th>
                     <th className="tw-w-[20%]">Tên</th>
@@ -41,7 +36,7 @@ const Dashboard = () => {
                                 <td>{product.description}</td>
                                 <td>
                                     <Link className="btn btn-warning mx-1" to={`/admin/update/${product.id}`}>Sửa</Link>
-                                    <button className="btn btn-danger mx-1">Xóa</button>
+                                    <button onClick={() => handleDelete(product.id)} className="btn btn-danger mx-1">Xóa</button>
                                 </td>
                             </tr>
                         ))
