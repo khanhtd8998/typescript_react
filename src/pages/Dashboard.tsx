@@ -5,17 +5,17 @@ import { TProduct } from "~/types/Product";
 
 type Props ={
     products: TProduct[],
-    onDelete: (id: string | number) => void,
+    onDelete: (id: string | number | undefined) => void,
 }
 const Dashboard = ({products, onDelete}: Props) => {
-    const handleDelete = (id: string | number) => {
+    const handleDelete = (id: string | number |undefined) => {
         onDelete(id)
     }
     return (
         <>
             <h1 className="tw-text-2xl fs-3 text-center my-4">Danh sách sản phẩm</h1>
             {/* <div className="container"></div> */}
-            <Link className="btn btn-success m-3" to='/admin/add'>Thêm sản phẩm</Link>
+            <Link className="btn btn-success mb-3 ms-3" to='/admin/add'>Thêm sản phẩm</Link>
             <table className="table text-center border-1 table-striped">
                 <thead className="table-light border-2 fs-5">
                     <th className="tw-w-[5%]">STT</th>

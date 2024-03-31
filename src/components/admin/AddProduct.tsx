@@ -1,6 +1,5 @@
 import { joiResolver } from '@hookform/resolvers/joi'
 import Joi from 'joi'
-import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TProduct } from '~/types/Product'
 
@@ -37,7 +36,7 @@ const AddProduct = ({ onAdd }: Props) => {
   } = useForm<TProduct>({
     resolver: joiResolver(schemaProduct)
   })
-  const onsubmit: SubmitHandler<TProduct> = (data) => {
+  const onSubmit: SubmitHandler<TProduct> = (data) => {
     onAdd(data)
   }
   return (
@@ -48,7 +47,7 @@ const AddProduct = ({ onAdd }: Props) => {
             <h5 className="">THÊM SẢN PHẨM</h5>
           </div>
           <div className="card-body pt-1">
-            <form onSubmit={handleSubmit(onsubmit)} className="row g-3 needs-validation">
+            <form onSubmit={handleSubmit(onSubmit)} className="row g-3 needs-validation">
               <div className="col-md-6">
                 <label className="form-label">Tên sản phẩm</label>
                 <input

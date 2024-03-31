@@ -10,7 +10,7 @@ export const getProducts = async () => {
     }
 };
 
-export const getProduct = async (id: string) => {
+export const getProduct = async (id: string | number) => {
     try {
         const { data } = await instance.get(`/products/${id}`);
         return data;
@@ -18,7 +18,14 @@ export const getProduct = async (id: string) => {
         console.log(error);
     }
 };
-
+export const updateProduct = async (product: TProduct) => {
+    try {
+        const { data } = await instance.patch   (`/products/${product.id}`, product);
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+};
 export const createProduct = async (product: TProduct) => {
     try {
         const { data } = await instance.post(`/products`, product);
@@ -28,7 +35,7 @@ export const createProduct = async (product: TProduct) => {
     }
 };
 
-export const removeProduct = async (id: string | number) => {
+export const removeProduct = async (id: string | number | undefined) => {
     try {
         await instance.delete(`/products/${id}`);
     } catch (error) {

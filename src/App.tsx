@@ -15,7 +15,8 @@ import UpdateProduct from "./components/admin/UpdateProduct";
 import Notfound from "./pages/Notfound";
 import { useEffect, useState } from "react";
 import { TProduct } from "./types/Product";
-import { createProduct, getProducts, removeProduct } from "./apis/products";
+import { createProduct, getProducts, removeProduct, updateProduct } from "./apis/products";
+import { isEmpty } from "lodash";
 
 
 
@@ -31,19 +32,29 @@ function App() {
   const handleAddProduct = (data: TProduct) => {
     (async () => {
       const newProduct = await createProduct(data);
-      setProducts([newProduct, ...products]);
+      setProducts([...products, newProduct]);
       navigate('/admin')
       alert("Thêm sản phẩm thành công")
     })()
   }
 
-  const handleDeleteProduct = (id: number | string) => {
+  const handleDeleteProduct = (id: number | string | undefined) => {
     (async () => {
       if(confirm('Are you sure you want to delete this product?')){
         await removeProduct(id);
         setProducts(products.filter(p => p.id != id  ));
       }
     })();
+  }
+
+  const handleUpdateProduct = (data: TProduct) => {
+    (async () => {
+      const product = await updateProduct(data);
+      setProducts(
+        products.map((p) => (p.id == product.id ? product : p))
+      )
+      navigate('/admin')
+    })()
   }
   return (
     <>
@@ -60,11 +71,12 @@ function App() {
           <Route path="/admin">
             <Route index element={<Dashboard products={products} onDelete={handleDeleteProduct} />} />
             <Route path="/admin/add" element={<AddProduct onAdd={handleAddProduct} />} />
-            <Route path="/admin/update/:id" element={<UpdateProduct />} />
+            <Route path="/admin/update/:id" element={<UpdateProduct onEdit={handleUpdateProduct} />} />
           </Route>
           <Route path="*" element={<Notfound />} />
         </Routes>
       </div>
+      <Footer/>
     </>
   );
 }

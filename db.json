@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 1,
-      "title": "iPhone 9",
+      "title": "iPhone 9 - 64 GB",
       "description": "An apple mobile which is nothing like apple",
       "price": 549,
       "discountPercentage": 12.96,
@@ -556,10 +556,10 @@
       ]
     },
     {
-      "title": "Khanh",
-      "price": 1200,
-      "description": "mo ta",
+      "title": "Khanh lan  tai ban lan 2",
+      "price": 120,
       "thumbnail": "https://picsum.photos/200/300",
+      "description": "Sản phẩm độc quyền, hay và đắt",
       "id": 31
     }
   ],
