@@ -32,11 +32,12 @@ const UpdateProduct = ({ onEdit }: Props) => {
     const [product, setProduct] = useState<TProduct | null>(null)
     const { id } = useParams();
     useEffect(() => {
+        if (!id) return
         (async () => {
             const data = await getProduct(`${id}`)
             setProduct(data)
         })()
-    }, [])
+    }, [id])
     const {
         register,
         handleSubmit,
@@ -45,6 +46,7 @@ const UpdateProduct = ({ onEdit }: Props) => {
         resolver: joiResolver(schemaProduct)
     })
     const onSubmit: SubmitHandler<TProduct> = (data) => {
+        console.log(data);
         if (id) {
             onEdit({ ...data, id })
         }
@@ -68,7 +70,7 @@ const UpdateProduct = ({ onEdit }: Props) => {
                                             defaultValue={product?.title}
                                             {...register("title")}
                                         />
-
+                                        {errors.title && <span className='text-danger'>{errors.title.message}</span>}
                                     </div>
                                     <div className="row my-3">
                                         <div className="col-md-2 my-3">
@@ -77,6 +79,7 @@ const UpdateProduct = ({ onEdit }: Props) => {
                                                 defaultValue={product?.price}
                                                 {...register("price")}
                                             />
+                                            {errors.price && <span className='text-danger'>{errors.price.message}</span>}
 
                                         </div>
                                         <div className="col-md-10 my-3">
@@ -85,15 +88,19 @@ const UpdateProduct = ({ onEdit }: Props) => {
                                                 defaultValue={product?.thumbnail}
                                                 {...register("thumbnail")}
                                             />
+                                            {errors.thumbnail && <span className='text-danger'>{errors.thumbnail.message}</span>}
+
                                         </div>
                                     </div>
 
                                     <div className="col-md-12">
                                         <label htmlFor="validationCustom05" className="form-label">Mô tả</label>
-                                        <input className="form-control"  id="description"
+                                        <input className="form-control" id="description"
                                             defaultValue={product?.description}
                                             {...register("description")}
                                         />
+                                        {errors.description && <span className='text-danger'>{errors.description.message}</span>}
+
                                     </div>
                                     <div className="col-md-12 mt-4">
                                         <button id="update-btn" className="btn btn-primary my-3" type="submit">Cập nhật</button>

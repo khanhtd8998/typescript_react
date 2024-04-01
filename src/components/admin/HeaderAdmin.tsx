@@ -13,7 +13,7 @@ const HeaderAdmin = (props: Props) => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <a className="nav-link active text-white" aria-current="page" href="/admin/add">Thêm</a>
                             </li>
                             <li className="nav-item dropdown">
@@ -24,7 +24,7 @@ const HeaderAdmin = (props: Props) => {
                                     <li><a className="dropdown-item" href="./admin/add">Thêm</a></li>
                                     <li><a className="dropdown-item" href="/admin">Danh sách</a></li>
                                 </ul>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
                                 <a className="nav-link text-white" aria-disabled="true" href="/">Về Website</a>
                             </li>

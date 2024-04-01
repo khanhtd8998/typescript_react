@@ -31,33 +31,39 @@ type cryptoType = {
   wallet: string
   network: string
 }
+// export type TUser = {
+//   id: number
+//   firstName: string
+//   lastName: string
+//   maidenName: string
+//   age: number
+//   gender: string
+//   email: string
+//   phone: string
+//   username: string
+//   password: string
+//   birthDate: string
+//   image: string
+//   bloodGroup: string
+//   height: number
+//   weight: number
+//   eyeColor: string
+//   hair: hairType
+//   domain: string
+//   ip: string
+//   address: addressType
+//   macAddress: string
+//   university: string
+//   bank: bankType
+//   company: companyType
+//   ein: string
+//   ssn: string
+//   userAgent: string
+//   crypto: cryptoType
+// }
 export type TUser = {
-  id: number
-  firstName: string
-  lastName: string
-  maidenName: string
-  age: number
-  gender: string
-  email: string
-  phone: string
+  id: number | string
   username: string
-  password: string
-  birthDate: string
-  image: string
-  bloodGroup: string
-  height: number
-  weight: number
-  eyeColor: string
-  hair: hairType
-  domain: string
-  ip: string
-  address: addressType
-  macAddress: string
-  university: string
-  bank: bankType
-  company: companyType
-  ein: string
-  ssn: string
-  userAgent: string
-  crypto: cryptoType
+  email: string
+  password:  string
 }

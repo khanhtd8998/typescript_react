@@ -59,16 +59,15 @@ function App() {
   return (
     <>
       <div className="app">
-        <Header />
         <Routes>
-          <Route path="/">
+          <Route path="/" element={<UserLayout/>}>
             <Route index element={<Home products={products} />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/login" element={<Login />} />
             <Route path="/detail/:id" element={<ProductDetail />} />
             <Route path="/register" element={<Register />} />
           </Route>
-          <Route path="/admin">
+          <Route path="/admin" element={<AdminLayout/>}>
             <Route index element={<Dashboard products={products} onDelete={handleDeleteProduct} />} />
             <Route path="/admin/add" element={<AddProduct onAdd={handleAddProduct} />} />
             <Route path="/admin/update/:id" element={<UpdateProduct onEdit={handleUpdateProduct} />} />
@@ -76,7 +75,6 @@ function App() {
           <Route path="*" element={<Notfound />} />
         </Routes>
       </div>
-      <Footer/>
     </>
   );
 }

@@ -1,16 +1,15 @@
 // LayoutUser.tsx
 import Header from '../Header';
 import Footer from '../Footer';
+import { Outlet } from 'react-router-dom';
 
-type Props = {
-    Components: React.ComponentType<any>;
-}
 
-const UserLayout: React.FC<Props> = ({ Components }) => {
+
+const UserLayout = () => {
     return (
         <>
             <Header />
-            <Components />
+            <Outlet />
             <Footer />
         </>
     );

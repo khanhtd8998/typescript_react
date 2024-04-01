@@ -1,16 +1,15 @@
 // LayoutUser.tsx
+import { Outlet } from 'react-router-dom';
 import HeaderAdmin from '../admin/HeaderAdmin';
 import Footer from '../Footer';
 
-type Props = {
-    Components: React.ComponentType<any>;
-}
 
-const AdminLayout: React.FC<Props> = ({ Components }) => {
+
+const AdminLayout = () => {
     return (
         <>
             <HeaderAdmin />
-            <Components />
+            <Outlet />
             <Footer />
         </>
     );
